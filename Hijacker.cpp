@@ -83,7 +83,7 @@ int main() {
 			system("cls");
 		}
 		else {
-			std::cout << "Invalid Command. Type 'help' to commands\n";
+			std::cout << "Invalid Command. Type '?' to commands\n";
 		}
 
 		std::cout << "\n";
