@@ -1,0 +1,9 @@
+C:\\Users\\<USER>\\Documents
+C:\\Users\\<USER>\\Downloads
+C:\\Users\\<USER>\\Pictures
+C:\\Users\\<USER>\\Music
+C:\\Users\\<USER>\\Desktop
+C:\\Users\\<USER>\\OneDrive
+C:\\Users\\<USER>\\Videos
+C:\\Users\\<USER>\\
+C:\\
