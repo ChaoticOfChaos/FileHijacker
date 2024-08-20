@@ -1,4 +1,6 @@
-// ReadFile.hpp
+// Módulo responsável por ler arquivos txt, como o "Folders.txt" e "Extensions.txt"
+// Módulo que já existe no meu github: https://github.com/chaoticofchaos/CppReadFile/
+// Só que com modificações, como por exemplo, não ler arquivos .csv
 
 #ifndef READFILE_HPP
 #define READFILE_HPP
@@ -9,97 +11,42 @@
 #include <iostream>
 #include <sstream>
 
+// Classe responsável por colocar o arquivo no código
 class readFileClass {
 private:
 	std::string path;
 	std::vector<std::string> content;
-	std::vector<std::vector<std::string>> contentCSV;
-	int contentType;
 
 public:
 
-	readFileClass(std::string filePath, std::string contentType = "txt") {
+	// Função inicial, único argumento é o caminho do arquivo
+	readFileClass(std::string filePath) {
 		this->path = filePath;
-		if (contentType == "txt") {
-			this->contentType = 1;
-		}
-		else if (contentType == "csv") {
-			this->contentType == 2;
-		}
-		else {
-			std::cerr << "Content Type Not Avalieble" << std::endl;
-			this->contentType = 1;
-		}
 	}
 
+	// Função usada para ler o arquivo, caso haja algum problema, ela irá retornar o valor 1, caso não, 0
 	int read() {
-		if (this->contentType == 1) {
-			std::ifstream arquivo(this->path);
+		std::ifstream arquivo(this->path);
 
-			if (!arquivo.is_open()) {
-				std::cerr << "Erro ao Abrir o Arquivo" << std::endl;
-				return 1;
-			}
-
-			std::string linha;
-
-			while (std::getline(arquivo, linha)) {
-				this->content.push_back(linha);
-			}
-
-			arquivo.close();
-
-			return 0;
+		if (!arquivo.is_open()) {
+			std::cerr << "Erro ao Abrir o Arquivo" << std::endl;
+			return 1;
 		}
-		else if (this->contentType == 2) {
-			std::ifstream arq(this->path);
 
-			if (!arq.is_open()) {
-				std::cerr << "Erro" << std::endl;
-				return 1;
-			}
+		std::string linha;
 
-			std::vector<std::vector<std::string>> dados;
-
-			std::string linha;
-			while (std::getline(arq, linha)) {
-				std::vector<std::string> linha_dados;
-				std::istringstream linha_stream(linha);
-				std::string campo;
-
-				while (std::getline(linha_stream, campo, ',')) {
-					linha_dados.push_back(campo);
-				}
-
-				dados.push_back(linha_dados);
-			}
-
-			arq.close();
-
-			this->contentCSV = dados;
-
-			return 0;
+		while (std::getline(arquivo, linha)) {
+			this->content.push_back(linha);
 		}
+
+		arquivo.close();
+
+		return 0;
 	}
 
+	// Função usada para obter o valor do arquivo. Caso haja problema com o .read(), ele irá retornar uma string nula
 	std::vector<std::string> getValue() {
-		if (this->contentType == 1) {
-			return this->content;
-		}
-		else {
-			std::cerr << "ERROR" << std::endl;
-			std::cerr << "Content Type Error" << std::endl;
-		}
-	}
-
-	std::vector<std::vector<std::string>> getValueCSV() {
-		if (this->contentType == 2) {
-			return this->contentCSV;
-		}
-		else {
-			std::cerr << "ERROR" << std::endl;
-			std::cerr << "Content Type Error" << std::endl;
-		}
+		return this->content;
 	}
 };
 

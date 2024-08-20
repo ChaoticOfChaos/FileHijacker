@@ -1,4 +1,4 @@
-// Hijacker.cpp
+// Arquivo Main, Responsável por importar o Hijack.hpp e Fazer Tudo Funcionar
 
 #include <iostream>
 
@@ -7,14 +7,20 @@
 
 #include "Hijack.hpp"
 
+// Funções simples eu optei por fazer no código main, para poupar tempo
+
+// Função feita apenas para não bagunçar tanto o código
 void Banner() {
 	std::cout << "Hijacker\n";
-	std::cout << "By Hash\n";
+	std::cout << "By ChaoticOfChaos\n";
+	std::cout << "Github: " << "https://github.com/chaoticofchaos/\n";
 }
 
+// Função para caso esqueça de algo
 void Help() {
 	std::cout << "? - Help\n";
 	std::cout << "Banner - Banner\n";
+	std::cout << "Clear - Clear Terminal\n";
 	std::cout << "Config.Extensions - Open Extensions Blacklist Config File\n";
 	std::cout << "Config.Folders - Open Folders Config File\n";
 	std::cout << "End - Close Hijacker\n";
@@ -24,6 +30,7 @@ void Help() {
 	std::cout << "Search - Start Hijack\n";
 }
 
+// Função inicial, aonde a magia acontece
 int main() {
 	std::vector<std::string> LIST;
 	bool Ready = false;
@@ -83,7 +90,7 @@ int main() {
 			system("cls");
 		}
 		else {
-			std::cout << "Invalid Command. Type '?' to commands\n";
+			std::cout << "Invalid Command. Type 'help' to commands\n";
 		}
 
 		std::cout << "\n";
@@ -91,3 +98,6 @@ int main() {
 
 	return 0;
 }
+
+// Caso Tenha Algo a Melhorar no Código, aceito Feedback
+// Forged by ChaoticofChaos
